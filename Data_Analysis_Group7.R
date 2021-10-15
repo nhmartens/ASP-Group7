@@ -326,7 +326,8 @@ resettest(mdl8, power=2)
 mdl3_new <- lm(Portfolio_disc_return ~  new_cases_per_million + 
                  I(new_cases_per_million^2) + MSCI_disc_return + 
                  I(MSCI_disc_return^2) + dMonday + dPeriod + 
-                 dPeriod:new_cases_per_million, 
+                 dPeriod:new_cases_per_million + 
+                 I(new_cases_per_million^2):dPeriod, 
            data = df_country1)
 summary(mdl3_new)
 resettest(mdl3_new, power = 2)
@@ -334,7 +335,8 @@ resettest(mdl3_new, power = 2)
 mdl7_new <- lm(Portfolio_cont_return ~  new_cases_per_million + 
                  I(new_cases_per_million^2) + MSCI_cont_return + 
                  I(MSCI_cont_return^2) + dMonday + dPeriod + 
-                 dPeriod:new_cases_per_million, 
+                 dPeriod:new_cases_per_million+ 
+                 I(new_cases_per_million^2):dPeriod, 
                data = df_country1)
 summary(mdl7_new)
 stargazer(mdl3_new, mdl7_new, intercept.bottom=FALSE, no.space = TRUE)
